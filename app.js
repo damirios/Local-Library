@@ -50,8 +50,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-
-const mongoDB = 'mongodb+srv://root:Irina3Maslenok1@cluster0.brkrdpn.mongodb.net/?retryWrites=true&w=majority';
+const dev_db_url = 'mongodb+srv://root:Irina3Maslenok1@cluster0.brkrdpn.mongodb.net/?retryWrites=true&w=majority';
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB conntection error:'));
